@@ -1,0 +1,21 @@
+{
+  "name": "@scow/scow-scheduler-adapter-interface",
+  "version": "1.9.0",
+  "description": "Interface for SCOW to call schedulers",
+  "author": "PKUHPC (https://github.com/PKUHPC)",
+  "repository": "https://github.com/PKUHPC/SCOW",
+  "main": "index.js",
+  "scripts": {
+    "lint": "buf lint",
+    "ci:version": "node scripts/version.mjs",
+    "ci:publish": "pnpm publish -r"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.26.2",
+    "front-matter": "4.0.2",
+    "@bufbuild/buf": "1.27.2"
+  },
+  "keywords": [],
+  "packageManager": "pnpm@8.9.0",
+  "license": "Mulan PSL v2"
+}
