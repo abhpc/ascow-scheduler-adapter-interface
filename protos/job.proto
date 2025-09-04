@@ -90,6 +90,15 @@ message SortInfo {
   SortOrder order = 2;
 }
 
+message GetJobTypeRequest {
+  string job_id = 1;
+  string user = 2;
+}
+
+message GetJobTypeResponse {
+  string job_type = 1;
+}
+
 message GetJobsRequest {
   // required JobInfo fields
   // The value of the string corresponds to the name of each field in JobInfo
@@ -269,4 +278,11 @@ service JobService {
    */
   rpc SubmitScriptAsJob(SubmitScriptAsJobRequest) returns (SubmitScriptAsJobResponse);
 
+  /*
+   * description: GetJobType 
+   * errors: 
+   * - scmd failed
+   *   UNKNOWN
+   */
+  rpc GetJobType(GetJobTypeRequest) returns (GetJobTypeResponse);
 }
