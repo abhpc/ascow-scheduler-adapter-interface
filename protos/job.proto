@@ -89,11 +89,11 @@ message SortInfo {
   string field = 1;
   SortOrder order = 2;
 }
-message GetResentlyJobPathsRequest {
+message GetRecentlyJobPathsRequest {
   string user = 1;
 }
 
-message GetResentlyJobPathsResponse {
+message GetRecentlyJobPathsResponse {
   repeated string workingDirectory = 1;
 }
 
@@ -294,9 +294,9 @@ service JobService {
   rpc GetJobType(GetJobTypeRequest) returns (GetJobTypeResponse);
 
   /*
-   * description: GetResentlyJobPaths 
+   * description: GetRecentlyJobPaths 
    * errors: 
    *   UNKNOWN
    */
-  rpc GetResentlyJobPaths(GetResentlyJobPathsRequest) returns (GetResentlyJobPathsResponse);
+  rpc GetRecentlyJobPaths(GetRecentlyJobPathsRequest) returns (GetRecentlyJobPathsResponse);
 }
