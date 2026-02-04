@@ -57,6 +57,7 @@ message QueryUserInAccountBlockStatusResponse {
 
 message DeleteUserRequest {
   string user_id = 1;
+  bool deleteHomeDir = 2;
 }
 
 message DeleteUserResponse {
