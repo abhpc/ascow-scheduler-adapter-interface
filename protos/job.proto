@@ -217,6 +217,22 @@ message SubmitScriptAsJobResponse {
   uint32 job_id = 1;
 }
 
+message NodeLoadInfo {
+  string node = 1;
+  double load_percent = 2;
+}
+
+message LowLoadJobInfo {
+  uint32 job_id = 1;
+  string user = 2;
+  string account = 3;
+  repeated NodeLoadInfo nodes = 4;
+}
+
+message GetLowLoadJobsResponse {
+  repeated LowLoadJobInfo jobs = 1;
+}
+
 service JobService {
   
   /*
@@ -299,4 +315,6 @@ service JobService {
    *   UNKNOWN
    */
   rpc GetRecentlyJobPaths(GetRecentlyJobPathsRequest) returns (GetRecentlyJobPathsResponse);
+
+  rpc GetLowLoadJobs(GetLowLoadJobsRequest) returns(GetLowLoadJobsResponse);
 }
