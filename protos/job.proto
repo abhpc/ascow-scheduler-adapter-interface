@@ -239,6 +239,21 @@ message GetLowLoadJobsResponse {
   repeated LowLoadJobInfo jobs = 1;
 }
 
+message GetRunningJobsLoadRequest {
+}
+
+message RunningJobLoadInfo {
+  uint32 job_id = 1;
+  // per-node CPU load percentage for the job's allocated nodes
+  repeated NodeLoadInfo nodes = 2;
+  // average load across all nodes (mean of node load_percent); -1 when no valid node load
+  double average_load_percent = 3;
+}
+
+message GetRunningJobsLoadResponse {
+  repeated RunningJobLoadInfo jobs = 1;
+}
+
 service JobService {
   
   /*
@@ -323,4 +338,13 @@ service JobService {
   rpc GetRecentlyJobPaths(GetRecentlyJobPathsRequest) returns (GetRecentlyJobPathsResponse);
 
   rpc GetLowLoadJobs(GetLowLoadJobsRequest) returns(GetLowLoadJobsResponse);
+
+  /*
+   * description: GetRunningJobsLoad - returns per-node CPU load and average load
+   * for every RUNNING job. Uses a single sinfo call to avoid per-job overhead.
+   * errors:
+   * - sinfo failed
+   *   INTERNAL, GET_NODE_INFO_FAILED, {}
+   */
+  rpc GetRunningJobsLoad(GetRunningJobsLoadRequest) returns(GetRunningJobsLoadResponse);
 }
